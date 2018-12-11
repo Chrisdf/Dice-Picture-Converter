@@ -1,0 +1,20 @@
+C:\Users\Chris\Dev\DicePictureGenerator\Dice Picture Generator\Dice Picture Generator\bin\Debug\Dice Picture Generator.exe.config
+C:\Users\Chris\Dev\DicePictureGenerator\Dice Picture Generator\Dice Picture Generator\bin\Debug\Dice Picture Generator.exe
+C:\Users\Chris\Dev\DicePictureGenerator\Dice Picture Generator\Dice Picture Generator\bin\Debug\Dice Picture Generator.pdb
+C:\Users\Chris\Dev\DicePictureGenerator\Dice Picture Generator\Dice Picture Generator\obj\Debug\Dice Picture Generator.csprojAssemblyReference.cache
+C:\Users\Chris\Dev\DicePictureGenerator\Dice Picture Generator\Dice Picture Generator\obj\Debug\MainWindow.g.cs
+C:\Users\Chris\Dev\DicePictureGenerator\Dice Picture Generator\Dice Picture Generator\obj\Debug\Source\DiceGeneratorControl.g.cs
+C:\Users\Chris\Dev\DicePictureGenerator\Dice Picture Generator\Dice Picture Generator\obj\Debug\App.g.cs
+C:\Users\Chris\Dev\DicePictureGenerator\Dice Picture Generator\Dice Picture Generator\obj\Debug\Dice Picture Generator_MarkupCompile.cache
+C:\Users\Chris\Dev\DicePictureGenerator\Dice Picture Generator\Dice Picture Generator\obj\Debug\Dice Picture Generator_MarkupCompile.lref
+C:\Users\Chris\Dev\DicePictureGenerator\Dice Picture Generator\Dice Picture Generator\obj\Debug\Dictionary.baml
+C:\Users\Chris\Dev\DicePictureGenerator\Dice Picture Generator\Dice Picture Generator\obj\Debug\MainWindow.baml
+C:\Users\Chris\Dev\DicePictureGenerator\Dice Picture Generator\Dice Picture Generator\obj\Debug\Source\DiceGeneratorControl.baml
+C:\Users\Chris\Dev\DicePictureGenerator\Dice Picture Generator\Dice Picture Generator\obj\Debug\Dice Picture Generator.g.resources
+C:\Users\Chris\Dev\DicePictureGenerator\Dice Picture Generator\Dice Picture Generator\obj\Debug\Dice_Picture_Generator.Properties.Resources.resources
+C:\Users\Chris\Dev\DicePictureGenerator\Dice Picture Generator\Dice Picture Generator\obj\Debug\Dice Picture Generator.csproj.GenerateResource.cache
+C:\Users\Chris\Dev\DicePictureGenerator\Dice Picture Generator\Dice Picture Generator\obj\Debug\Dice Picture Generator.csproj.CoreCompileInputs.cache
+C:\Users\Chris\Dev\DicePictureGenerator\Dice Picture Generator\Dice Picture Generator\obj\Debug\Dice Picture Generator.exe
+C:\Users\Chris\Dev\DicePictureGenerator\Dice Picture Generator\Dice Picture Generator\obj\Debug\Dice Picture Generator.pdb
+C:\Users\Chris\Dev\DicePictureGenerator\Dice Picture Generator\Dice Picture Generator\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Chris\Dev\DicePictureGenerator\Dice Picture Generator\Dice Picture Generator\obj\Debug\App.baml

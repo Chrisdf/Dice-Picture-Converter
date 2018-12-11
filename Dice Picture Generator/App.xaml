@@ -1,0 +1,10 @@
+﻿<Application x:Class="Dice_Picture_Generator.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Dice_Picture_Generator"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+
+        <BitmapImage x:Key="dice1" UriSource="Resource/dice1.png" />
+    </Application.Resources>
+</Application>
