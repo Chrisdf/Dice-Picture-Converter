@@ -1,0 +1,363 @@
+#1: Put (5) Black Three in a row
+#2: Start new line on board
+#3: Put (71) Black Four in a row
+#4: Put (6) Black Two in a row
+#5: Put (16) Black Four in a row
+#6: Put (2) Black Five in a row
+#7: Put (2) Black Four in a row
+#8: Put (8) Black Five in a row
+#9: Start new line on board
+#10: Put (37) Black Four in a row
+#11: Put (4) Black Two in a row
+#12: Put (1) Black One in a row
+#13: Put (1) Black Two in a row
+#14: Put (14) Black Four in a row
+#15: Put (3) Black Four in a row
+#16: Put (13) Black Five in a row
+#17: Start new line on board
+#18: Put (34) Black Four in a row
+#19: Put (1) Black Two in a row
+#20: Put (6) Black One in a row
+#21: Put (12) Black Four in a row
+#22: Put (4) Black One in a row
+#23: Put (1) Black Three in a row
+#24: Put (16) Black Five in a row
+#25: Start new line on board
+#26: Put (30) Black Four in a row
+#27: Put (7) Black One in a row
+#28: Put (2) Black Two in a row
+#29: Put (5) Black Four in a row
+#30: Put (2) Black Five in a row
+#31: Put (1) Black Two in a row
+#32: Put (7) Black One in a row
+#33: Put (1) Black Three in a row
+#34: Put (19) Black Five in a row
+#35: Put (5) Black Four in a row
+#36: Start new line on board
+#37: Put (18) Black Four in a row
+#38: Put (8) Black One in a row
+#39: Put (1) Black Two in a row
+#40: Put (2) Black Four in a row
+#41: Put (5) Black Five in a row
+#42: Put (1) Black Two in a row
+#43: Put (9) Black One in a row
+#44: Put (1) Black Three in a row
+#45: Start new line on board
+#46: Put (42) Black Five in a row
+#47: Put (9) Black One in a row
+#48: Put (1) Black Three in a row
+#49: Put (1) Black Four in a row
+#50: Put (6) Black Five in a row
+#51: Put (12) Black One in a row
+#52: Put (1) Black Three in a row
+#53: Start new line on board
+#54: Put (40) Black Five in a row
+#55: Put (9) Black One in a row
+#56: Put (2) Black Two in a row
+#57: Put (7) Black Five in a row
+#58: Put (14) Black One in a row
+#59: Start new line on board
+#60: Put (40) Black Five in a row
+#61: Put (10) Black One in a row
+#62: Put (1) Black Two in a row
+#63: Put (1) Black Four in a row
+#64: Put (4) Black Five in a row
+#65: Put (16) Black One in a row
+#66: Start new line on board
+#67: Put (39) Black Five in a row
+#68: Put (10) Black One in a row
+#69: Put (2) Black Two in a row
+#70: Put (4) Black Five in a row
+#71: Put (18) Black One in a row
+#72: Put (1) Black Four in a row
+#73: Start new line on board
+#74: Put (36) Black Five in a row
+#75: Put (11) Black One in a row
+#76: Put (1) Black Two in a row
+#77: Put (3) Black Five in a row
+#78: Put (20) Black One in a row
+#79: Start new line on board
+#80: Put (37) Black Five in a row
+#81: Put (12) Black One in a row
+#82: Put (1) Black Three in a row
+#83: Put (2) Black Five in a row
+#84: Put (21) Black One in a row
+#85: Start new line on board
+#86: Put (36) Black Five in a row
+#87: Put (12) Black One in a row
+#88: Put (1) Black Two in a row
+#89: Put (2) Black Five in a row
+#90: Put (21) Black One in a row
+#91: Start new line on board
+#92: Put (36) Black Five in a row
+#93: Put (13) Black One in a row
+#94: Put (1) Black Five in a row
+#95: Put (1) Black Four in a row
+#96: Put (21) Black One in a row
+#97: Start new line on board
+#98: Put (36) Black Five in a row
+#99: Put (13) Black One in a row
+#100: Put (2) Black Four in a row
+#101: Put (22) Black One in a row
+#102: Start new line on board
+#103: Put (36) Black Five in a row
+#104: Put (14) Black One in a row
+#105: Put (24) Black One in a row
+#106: Start new line on board
+#107: Put (36) Black Five in a row
+#108: Put (39) Black One in a row
+#109: Start new line on board
+#110: Put (36) Black Five in a row
+#111: Put (38) Black One in a row
+#112: Put (1) Black Four in a row
+#113: Start new line on board
+#114: Put (35) Black Five in a row
+#115: Put (38) Black One in a row
+#116: Put (1) Black Five in a row
+#117: Start new line on board
+#118: Put (35) Black Five in a row
+#119: Put (38) Black One in a row
+#120: Put (1) Black Six in a row
+#121: Start new line on board
+#122: Put (35) Black Five in a row
+#123: Put (38) Black One in a row
+#124: Put (1) Black Six in a row
+#125: Start new line on board
+#126: Put (35) Black Five in a row
+#127: Put (37) Black One in a row
+#128: Put (2) Black Six in a row
+#129: Start new line on board
+#130: Put (35) Black Five in a row
+#131: Put (36) Black One in a row
+#132: Put (1) Black Five in a row
+#133: Put (21) Black Five in a row
+#134: Put (4) Black Six in a row
+#135: Start new line on board
+#136: Put (10) Black Five in a row
+#137: Put (36) Black One in a row
+#138: Put (1) Black Six in a row
+#139: Put (19) Black Five in a row
+#140: Put (9) Black Six in a row
+#141: Start new line on board
+#142: Put (7) Black Five in a row
+#143: Put (35) Black One in a row
+#144: Put (1) Black Six in a row
+#145: Put (19) Black Five in a row
+#146: Put (11) Black Six in a row
+#147: Start new line on board
+#148: Put (6) Black Five in a row
+#149: Put (34) Black One in a row
+#150: Put (21) Black Five in a row
+#151: Put (12) Black Six in a row
+#152: Start new line on board
+#153: Put (6) Black Five in a row
+#154: Put (12) Black One in a row
+#155: Put (1) Black Three in a row
+#156: Put (19) Black One in a row
+#157: Put (21) Black Five in a row
+#158: Put (12) Black Six in a row
+#159: Start new line on board
+#160: Put (6) Black Five in a row
+#161: Put (11) Black One in a row
+#162: Put (1) Black Five in a row
+#163: Put (1) Black Four in a row
+#164: Put (1) Black Two in a row
+#165: Put (16) Black One in a row
+#166: Put (21) Black Five in a row
+#167: Put (12) Black Six in a row
+#168: Start new line on board
+#169: Put (6) Black Five in a row
+#170: Put (10) Black One in a row
+#171: Put (1) Black Five in a row
+#172: Put (1) Black Two in a row
+#173: Put (1) Black One in a row
+#174: Put (2) Black Two in a row
+#175: Put (1) Black Four in a row
+#176: Put (13) Black One in a row
+#177: Put (20) Black Five in a row
+#178: Put (12) Black Six in a row
+#179: Put (4) Black Five in a row
+#180: Start new line on board
+#181: Put (1) Black Four in a row
+#182: Put (10) Black One in a row
+#183: Put (2) Black Three in a row
+#184: Put (5) Black One in a row
+#185: Put (1) Black Three in a row
+#186: Put (13) Black One in a row
+#187: Put (1) Black Three in a row
+#188: Put (19) Black Four in a row
+#189: Put (1) Black Five in a row
+#190: Put (7) Black Six in a row
+#191: Put (2) Black Five in a row
+#192: Start new line on board
+#193: Put (5) Black Four in a row
+#194: Put (10) Black One in a row
+#195: Put (2) Black Two in a row
+#196: Put (23) Black One in a row
+#197: Put (18) Black Three in a row
+#198: Put (2) Black Four in a row
+#199: Put (3) Black Five in a row
+#200: Put (5) Black Four in a row
+#201: Start new line on board
+#202: Put (6) Black Three in a row
+#203: Put (10) Black One in a row
+#204: Put (2) Black Two in a row
+#205: Put (24) Black One in a row
+#206: Put (2) Black Two in a row
+#207: Put (14) Black Three in a row
+#208: Put (10) Black Four in a row
+#209: Start new line on board
+#210: Put (8) Black Three in a row
+#211: Put (10) Black One in a row
+#212: Put (1) Black Two in a row
+#213: Put (28) Black One in a row
+#214: Put (1) Black Two in a row
+#215: Put (12) Black Three in a row
+#216: Put (9) Black Four in a row
+#217: Start new line on board
+#218: Put (9) Black Three in a row
+#219: Put (43) Black One in a row
+#220: Put (13) Black Three in a row
+#221: Put (1) Black Three in a row
+#222: Put (2) Black Four in a row
+#223: Put (1) Black Three in a row
+#224: Start new line on board
+#225: Put (11) Black Three in a row
+#226: Put (44) Black One in a row
+#227: Put (11) Black Three in a row
+#228: Start new line on board
+#229: Put (19) Black Three in a row
+#230: Put (45) Black One in a row
+#231: Put (1) Black Two in a row
+#232: Put (27) Black Three in a row
+#233: Start new line on board
+#234: Put (47) Black One in a row
+#235: Put (1) Black Two in a row
+#236: Put (1) Black Three in a row
+#237: Put (11) Black Three in a row
+#238: Put (1) Black Four in a row
+#239: Start new line on board
+#240: Put (11) Black Three in a row
+#241: Put (47) Black One in a row
+#242: Start new line on board
+#243: Put (28) Black Three in a row
+#244: Put (47) Black One in a row
+#245: Put (1) Black Two in a row
+#246: Start new line on board
+#247: Put (26) Black Three in a row
+#248: Put (47) Black One in a row
+#249: Put (1) Black Two in a row
+#250: Put (23) Black Three in a row
+#251: Start new line on board
+#252: Put (2) Black Two in a row
+#253: Put (48) Black One in a row
+#254: Put (1) Black Two in a row
+#255: Start new line on board
+#256: Put (25) Black Three in a row
+#257: Put (49) Black One in a row
+#258: Put (4) Black Three in a row
+#259: Put (12) Black Four in a row
+#260: Put (7) Black Three in a row
+#261: Start new line on board
+#262: Put (49) Black One in a row
+#263: Put (1) Black Two in a row
+#264: Put (11) Black Three in a row
+#265: Put (1) Black Four in a row
+#266: Start new line on board
+#267: Put (11) Black Three in a row
+#268: Put (49) Black One in a row
+#269: Put (7) Black Three in a row
+#270: Put (3) Black Three in a row
+#271: Put (5) Black Two in a row
+#272: Put (7) Black Two in a row
+#273: Start new line on board
+#274: Put (50) Black One in a row
+#275: Put (4) Black Two in a row
+#276: Put (3) Black Three in a row
+#277: Put (1) Black Four in a row
+#278: Put (6) Black Three in a row
+#279: Start new line on board
+#280: Put (8) Black Two in a row
+#281: Put (49) Black One in a row
+#282: Put (4) Black Three in a row
+#283: Put (19) Black Three in a row
+#284: Start new line on board
+#285: Put (1) Black Two in a row
+#286: Put (48) Black One in a row
+#287: Put (4) Black Two in a row
+#288: Put (3) Black Three in a row
+#289: Put (5) Black Two in a row
+#290: Put (4) Black Three in a row
+#291: Start new line on board
+#292: Put (7) Black Three in a row
+#293: Put (48) Black One in a row
+#294: Put (3) Black Two in a row
+#295: Put (2) Black One in a row
+#296: Put (1) Black Two in a row
+#297: Put (7) Black Three in a row
+#298: Put (2) Black Two in a row
+#299: Start new line on board
+#300: Put (7) Black Three in a row
+#301: Put (49) Black One in a row
+#302: Put (1) Black One in a row
+#303: Put (6) Black Two in a row
+#304: Put (1) Black Three in a row
+#305: Put (4) Black Four in a row
+#306: Put (3) Black Four in a row
+#307: Start new line on board
+#308: Put (6) Black Three in a row
+#309: Put (49) Black One in a row
+#310: Put (21) Black Two in a row
+#311: Put (1) Black Two in a row
+#312: Start new line on board
+#313: Put (2) Black Three in a row
+#314: Put (49) Black One in a row
+#315: Put (1) Black Three in a row
+#316: Put (3) Black Three in a row
+#317: Put (5) Black Two in a row
+#318: Put (2) Black One in a row
+#319: Put (2) Black Two in a row
+#320: Put (2) Black Three in a row
+#321: Start new line on board
+#322: Put (5) Black Two in a row
+#323: Put (49) Black One in a row
+#324: Put (2) Black Three in a row
+#325: Put (3) Black Three in a row
+#326: Put (1) Black Three in a row
+#327: Put (2) Black Three in a row
+#328: Put (8) Black Two in a row
+#329: Put (2) Black Three in a row
+#330: Start new line on board
+#331: Put (2) Black Two in a row
+#332: Put (49) Black One in a row
+#333: Put (4) Black Two in a row
+#334: Put (1) Black Three in a row
+#335: Put (4) Black Two in a row
+#336: Put (2) Black Three in a row
+#337: Put (4) Black Four in a row
+#338: Put (2) Black Three in a row
+#339: Start new line on board
+#340: Put (3) Black Three in a row
+#341: Put (49) Black One in a row
+#342: Put (2) Black Two in a row
+#343: Put (1) Black One in a row
+#344: Put (1) Black Two in a row
+#345: Put (7) Black Three in a row
+#346: Put (1) Black Three in a row
+#347: Put (4) Black Four in a row
+#348: Put (3) Black Three in a row
+#349: Start new line on board
+#350: Put (50) Black One in a row
+#351: Put (8) Black Three in a row
+#352: Put (4) Black Three in a row
+#353: Put (3) Black Three in a row
+#354: Put (1) Black Three in a row
+#355: Put (4) Black Two in a row
+#356: Start new line on board
+#357: Put (51) Black One in a row
+#358: Put (7) Black Two in a row
+#359: Put (12) Black Three in a row
+#360: Start new line on board
+#361: Put (5) Black Two in a row
+#362: Put (49) Black One in a row
+#363: Start new line on board
