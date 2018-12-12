@@ -40,6 +40,53 @@ namespace Dice_Picture_Generator.Source
             InitDiceArrays();
         }
 
+
+        private void InitDiceArrays()
+        {
+            fullColorDice[0] = GetBitmap("dice1");
+            fullColorDice[1] = GetBitmap("dice2");
+            fullColorDice[2] = GetBitmap("dice3");
+            fullColorDice[3] = GetBitmap("dice4");
+            fullColorDice[4] = GetBitmap("dice5");
+            fullColorDice[5] = GetBitmap("dice6");
+            fullColorDice[6] = GetBitmap("black_dice6");
+            fullColorDice[7] = GetBitmap("black_dice5");
+            fullColorDice[8] = GetBitmap("black_dice4");
+            fullColorDice[9] = GetBitmap("black_dice3");
+            fullColorDice[10] = GetBitmap("black_dice2");
+            fullColorDice[11] = GetBitmap("black_dice1");
+
+            whiteDice[0] = GetBitmap("dice1");
+            whiteDice[1] = GetBitmap("dice2");
+            whiteDice[2] = GetBitmap("dice3");
+            whiteDice[3] = GetBitmap("dice4");
+            whiteDice[4] = GetBitmap("dice5");
+            whiteDice[5] = GetBitmap("dice6");
+
+            blackDice[0] = GetBitmap("black_dice6");
+            blackDice[1] = GetBitmap("black_dice5");
+            blackDice[2] = GetBitmap("black_dice4");
+            blackDice[3] = GetBitmap("black_dice3");
+            blackDice[4] = GetBitmap("black_dice2");
+            blackDice[5] = GetBitmap("black_dice1");
+
+            diceList = new Dictionary<string, Bitmap[]>();
+            diceNamesList = new Dictionary<string, string[]>();
+
+            diceList["Full_Color"] = fullColorDice;
+            diceList["White"] = whiteDice;
+            diceList["Black"] = blackDice;
+
+            string[] whiteDiceNames = { "White One", "White Two", "White Three", "White Four", "White Five", "White Six" };
+            string[] blackDiceNames = { "Black Six", "Black Five", "Black Four", "Black Three", "Black Two", "Black One" };
+            string[] allnames = whiteDiceNames.Concat(blackDiceNames).ToArray();
+            allnames[6] = "Black Six";
+
+            diceNamesList["Full_Color"] = allnames;
+            diceNamesList["White"] = whiteDiceNames;
+            diceNamesList["Black"] = blackDiceNames;
+        }
+
         private async void button1_Click(object sender, EventArgs e)
         {
             if (NumDice == "")
@@ -57,6 +104,7 @@ namespace Dice_Picture_Generator.Source
                 var path = openFileDialog1.FileName;
                 fileNameNoExt = System.IO.Path.GetFileNameWithoutExtension(path);
                 filePath = System.IO.Path.GetDirectoryName(path);
+                Directory.CreateDirectory(filePath + "_Output");
             }
             else
             {
@@ -107,7 +155,7 @@ namespace Dice_Picture_Generator.Source
             double brightnessIncrement = 1.0 / dice.Length;
 
             string diceMap = "";
-            using (StreamWriter file = new StreamWriter(GetFileName(filePath, fileNameNoExt, curName, ".txt")))
+            using (StreamWriter file = new StreamWriter(GetFullFilePath(filePath, fileNameNoExt, curName, ".txt")))
             {
                 for (int x = 0; x < grayscaleImage.Height; x++)
                 {
@@ -139,7 +187,7 @@ namespace Dice_Picture_Generator.Source
 
         private void FinalizeGeneratedImage(Bitmap[] dice, string curDicePackName, string filePath, string fileNameNoExt, Bitmap grayscaleImage)
         {
-            var lines = File.ReadAllLines(GetFileName(filePath, fileNameNoExt, curDicePackName, ".txt"));
+            var lines = File.ReadAllLines(GetFullFilePath(filePath, fileNameNoExt, curDicePackName, ".txt"));
             Bitmap preview = new Bitmap(grayscaleImage.Width * 40, grayscaleImage.Height * 40);
             int dieWidth = 40;
             int curLine = 0;
@@ -162,7 +210,8 @@ namespace Dice_Picture_Generator.Source
                 }
             }
 
-            preview.Save(GetFileName(filePath, fileNameNoExt, curDicePackName, "_DiceImage.png"), ImageFormat.Png);
+            preview.Save(GetFullFilePath(filePath, fileNameNoExt, curDicePackName, "_DiceImage.png"), ImageFormat.Png);
+            WriteInstructions(curDicePackName, filePath, fileNameNoExt);
 
             this.Dispatcher.Invoke(() =>
             {
@@ -173,24 +222,105 @@ namespace Dice_Picture_Generator.Source
         private void WriteInstructions(string curDicePackName, string filePath, string fileNameNoExt)
         {
             string line;
-            using (StreamReader file = new StreamReader(GetFileName(filePath, fileNameNoExt, curDicePackName, ".txt")))
+            var lineCount = 1;
+            var diceInstruction = diceNamesList[curDicePackName];
+            var diceCount = new Dictionary<string, int>();
+            var diceColorCount = new Dictionary<string, int>();
+
+            var instructionsFilePath = GetFullFilePath(filePath, fileNameNoExt, curDicePackName, "_Instructions.txt");
+            var diceIntFilePath = GetFullFilePath(filePath, fileNameNoExt, curDicePackName, ".txt");
+
+            using (StreamReader file = new StreamReader(diceIntFilePath))
+            using (StreamWriter instructions = new StreamWriter(instructionsFilePath))
             {
                 line = file.ReadLine();
+
+                int curDiceCount = 1;
+
                 while (line != null)
                 {
                     var splitLine = line.Split(null);
+                    string curDiceSequence = null;
+
                     for (int i = 0; i < splitLine.Length; i++)
                     {
+                        if (splitLine[i] == "")
+                            continue;
+
                         var curDiceNum = int.Parse(splitLine[i]);
-                        var dice = diceList[curDicePackName];
+                        var curDiceName = diceInstruction[curDiceNum];
+
+
+                        if (curDiceSequence == curDiceName)
+                            curDiceCount++;
+                        else
+                        {
+                            if (curDiceSequence != null)
+                            {
+                                instructions.WriteLine($"#{lineCount}: Put ({curDiceCount}) {curDiceSequence} in a row");
+                                lineCount++;
+
+                                IncrementKey(diceCount, curDiceSequence, curDiceCount);
+                            }
+
+                            curDiceSequence = curDiceName;
+                            curDiceCount = 1;
+                        }
                     }
+
+                    instructions.WriteLine($"#{lineCount}: Start new line on board");
+                    lineCount++;
+                    line = file.ReadLine();
                 }
             }
+
+            foreach (var curDiceName in diceCount.Keys)
+            {
+                var diceColor = curDiceName.Split(null)[0];
+                var countForDiceNum = diceCount[curDiceName];
+
+                IncrementKey(diceColorCount, diceColor, countForDiceNum);
+            }
+
+            string diceTotals = GetTotalDiceString(diceCount, diceColorCount);
+            PrependStringToFile(instructionsFilePath, diceTotals);
         }
 
-        private string GetFileName(string filePath, string fileNameNoExt, string curName, string ext)
+        private string GetTotalDiceString(Dictionary<string, int> diceCount, Dictionary<string, int> diceColorCount)
         {
-            return filePath + "\\" + fileNameNoExt + curName + ext;
+            int totalDice = 0;
+
+            foreach (var curDiceColor in diceColorCount.Keys)
+                totalDice += diceColorCount[curDiceColor];
+
+            string diceTotals = $"-- Total Dice required: {totalDice} -- {Environment.NewLine}";
+
+            foreach (var curDiceColor in diceColorCount.Keys)
+                diceTotals += $"-- Total {curDiceColor} required: {diceColorCount[curDiceColor]} --{Environment.NewLine}";
+
+            diceTotals += Environment.NewLine;
+
+            foreach (var curDice in diceCount.Keys)
+                diceTotals += $"-- Total {curDice} required: {diceCount[curDice]} -- {Environment.NewLine}";
+
+            diceTotals += Environment.NewLine;
+
+            return diceTotals;
+        }
+
+        private void PrependStringToFile(string filePath, string newContent)
+        {
+            string currentContent = String.Empty;
+            if (File.Exists(filePath))
+            {
+                currentContent = File.ReadAllText(filePath);
+            }
+            File.WriteAllText(filePath, newContent + currentContent);
+        }
+
+        private string GetFullFilePath(string filePath, string fileNameNoExt, string curName, string ext)
+        {
+            return filePath + "_Output\\" + fileNameNoExt + "_" + curName + ext;
         }
 
         private static Bitmap MakeGrayscale3(Bitmap original)
@@ -249,51 +379,6 @@ namespace Dice_Picture_Generator.Source
             return new Bitmap($"..\\..\\Resources\\{name}.png");
         }
 
-        private void InitDiceArrays()
-        {
-            fullColorDice[0] = GetBitmap("dice1");
-            fullColorDice[1] = GetBitmap("dice2");
-            fullColorDice[2] = GetBitmap("dice3");
-            fullColorDice[3] = GetBitmap("dice4");
-            fullColorDice[4] = GetBitmap("dice5");
-            fullColorDice[5] = GetBitmap("black_dice6");
-            fullColorDice[6] = GetBitmap("black_dice6");
-            fullColorDice[7] = GetBitmap("black_dice5");
-            fullColorDice[8] = GetBitmap("black_dice4");
-            fullColorDice[9] = GetBitmap("black_dice3");
-            fullColorDice[10] = GetBitmap("black_dice2");
-            fullColorDice[11] = GetBitmap("black_dice1");
-
-            whiteDice[0] = GetBitmap("dice1");
-            whiteDice[1] = GetBitmap("dice2");
-            whiteDice[2] = GetBitmap("dice3");
-            whiteDice[3] = GetBitmap("dice4");
-            whiteDice[4] = GetBitmap("dice5");
-            whiteDice[5] = GetBitmap("dice6");
-
-            blackDice[0] = GetBitmap("black_dice6");
-            blackDice[1] = GetBitmap("black_dice5");
-            blackDice[2] = GetBitmap("black_dice4");
-            blackDice[3] = GetBitmap("black_dice3");
-            blackDice[4] = GetBitmap("black_dice2");
-            blackDice[5] = GetBitmap("black_dice1");
-
-            diceList = new Dictionary<string, Bitmap[]>();
-            diceNamesList = new Dictionary<string, string[]>();
-
-            diceList["Full_Color"] = fullColorDice;
-            diceList["White"] = whiteDice;
-            diceList["Black"] = blackDice;
-
-            string[] whiteDiceNames = { "White One", "White Two", "White Three", "White Four", "White Five", "White Six"};
-            string[] blackDiceNames = { "Black One", "Black Two", "Black Three", "Black Four", "Black Five", "Black Six" };
-            string[] allnames = whiteDiceNames.Concat(blackDiceNames).ToArray();
-
-            diceNamesList["Full_Color"] = allnames;
-            diceNamesList["White"] = whiteDiceNames;
-            diceNamesList["Black"] = blackDiceNames;
-        }
-
         private static BitmapImage BitmapToImageSource(Bitmap bitmap)
         {
             using (MemoryStream memory = new MemoryStream())
@@ -308,6 +393,12 @@ namespace Dice_Picture_Generator.Source
 
                 return bitmapimage;
             }
+        }
+
+        public static void IncrementKey<TKey>(Dictionary<TKey, int> dictionary, TKey key, int value)
+        {
+            dictionary.TryGetValue(key, out var currentCount);
+            dictionary[key] = currentCount += value;
         }
     }
 }
