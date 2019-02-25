@@ -40,7 +40,6 @@ namespace Dice_Picture_Generator.Source
             InitDiceArrays();
         }
 
-
         private void InitDiceArrays()
         {
             fullColorDice[0] = GetBitmap("dice1");
@@ -74,8 +73,8 @@ namespace Dice_Picture_Generator.Source
             diceNamesList = new Dictionary<string, string[]>();
 
             diceList["Full_Color"] = fullColorDice;
-            diceList["White"] = whiteDice;
-            diceList["Black"] = blackDice;
+            //diceList["White"] = whiteDice;
+            //diceList["Black"] = blackDice;
 
             string[] whiteDiceNames = { "White One", "White Two", "White Three", "White Four", "White Five", "White Six" };
             string[] blackDiceNames = { "Black Six", "Black Five", "Black Four", "Black Three", "Black Two", "Black One" };
@@ -83,8 +82,8 @@ namespace Dice_Picture_Generator.Source
             allnames[6] = "Black Six";
 
             diceNamesList["Full_Color"] = allnames;
-            diceNamesList["White"] = whiteDiceNames;
-            diceNamesList["Black"] = blackDiceNames;
+            //diceNamesList["White"] = whiteDiceNames;
+            //diceNamesList["Black"] = blackDiceNames;
         }
 
         private async void button1_Click(object sender, EventArgs e)
@@ -126,8 +125,22 @@ namespace Dice_Picture_Generator.Source
                         int maxSize = (int)Math.Floor(Math.Sqrt(maxDice));
                         float percent = (new List<float> { (float)maxSize / (float)original.Width, (float)maxSize / (float)original.Height }).Min();
                         System.Drawing.Size resultSize = new System.Drawing.Size((int)Math.Floor(original.Width * percent), (int)Math.Floor(original.Height * percent));
+
+                        float width = resultSize.Width;
+                        float height = resultSize.Height;
+                        float aspectRatio = width / height;
+                        int diceBuffer = 100;
+                        var curDiceRequired = width * height;
+
+                        while (curDiceRequired < maxDice - diceBuffer)
+                        {
+                            width += aspectRatio;
+                            height += 1 / aspectRatio;
+                            curDiceRequired = width * height;
+                        }
+
                         if (resultSize.Width <= bm.Width && resultSize.Height <= bm.Height)
-                            bm = ResizeImage((Image)bm, resultSize.Width, resultSize.Height);
+                            bm = ResizeImage(bm, (int) width, (int) height);
                     }
 
                     for (int i = 0; i < diceList.Keys.Count; i++)
@@ -223,6 +236,7 @@ namespace Dice_Picture_Generator.Source
         {
             string line;
             var lineCount = 1;
+            int width = 0, height = 0;
             var diceInstruction = diceNamesList[curDicePackName];
             var diceCount = new Dictionary<string, int>();
             var diceColorCount = new Dictionary<string, int>();
@@ -242,6 +256,9 @@ namespace Dice_Picture_Generator.Source
                     var splitLine = line.Split(null);
                     string curDiceSequence = null;
 
+                    if (width == 0)
+                        width = splitLine.Where(c => c != "" && c != null).Count();
+
                     for (int i = 0; i < splitLine.Length; i++)
                     {
                         if (splitLine[i] == "")
@@ -252,14 +269,22 @@ namespace Dice_Picture_Generator.Source
 
 
                         if (curDiceSequence == curDiceName)
+                        {
                             curDiceCount++;
+
+                            if (i == splitLine.Length-2)
+                            {
+                                instructions.WriteLine($"#{lineCount}: Put ({curDiceCount}) {curDiceSequence} in a row");
+                                lineCount++;
+                                IncrementKey(diceCount, curDiceSequence, curDiceCount);
+                            }
+                        }
                         else
                         {
                             if (curDiceSequence != null)
                             {
                                 instructions.WriteLine($"#{lineCount}: Put ({curDiceCount}) {curDiceSequence} in a row");
                                 lineCount++;
-
                                 IncrementKey(diceCount, curDiceSequence, curDiceCount);
                             }
 
@@ -270,6 +295,7 @@ namespace Dice_Picture_Generator.Source
 
                     instructions.WriteLine($"#{lineCount}: Start new line on board");
                     lineCount++;
+                    height++;
                     line = file.ReadLine();
                 }
             }
@@ -282,11 +308,11 @@ namespace Dice_Picture_Generator.Source
                 IncrementKey(diceColorCount, diceColor, countForDiceNum);
             }
 
-            string diceTotals = GetTotalDiceString(diceCount, diceColorCount);
+            string diceTotals = GetTotalDiceString(diceCount, diceColorCount, width, height);
             PrependStringToFile(instructionsFilePath, diceTotals);
         }
 
-        private string GetTotalDiceString(Dictionary<string, int> diceCount, Dictionary<string, int> diceColorCount)
+        private string GetTotalDiceString(Dictionary<string, int> diceCount, Dictionary<string, int> diceColorCount, int width, int height)
         {
             int totalDice = 0;
 
@@ -294,6 +320,8 @@ namespace Dice_Picture_Generator.Source
                 totalDice += diceColorCount[curDiceColor];
 
             string diceTotals = $"-- Total Dice required: {totalDice} -- {Environment.NewLine}";
+
+            diceTotals += $"-- Width: {width} | Height: {height} | WxH: {width * height} -- {Environment.NewLine}";
 
             foreach (var curDiceColor in diceColorCount.Keys)
                 diceTotals += $"-- Total {curDiceColor} required: {diceColorCount[curDiceColor]} --{Environment.NewLine}";
