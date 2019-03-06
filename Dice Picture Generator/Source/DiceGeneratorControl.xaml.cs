@@ -248,54 +248,39 @@ namespace Dice_Picture_Generator.Source
             using (StreamWriter instructions = new StreamWriter(instructionsFilePath))
             {
                 line = file.ReadLine();
-
-                int curDiceCount = 1;
-
+                
                 while (line != null)
                 {
-                    var splitLine = line.Split(null);
-                    string curDiceSequence = null;
+                    height++;
+                    instructions.WriteLine($"{Environment.NewLine}Instructions for row number {height} below:");
+
+                    var splitLine = line.Split(null).Where(c => c != " " && c != "" && c != null)
+                                    .Select(c => int.Parse(c))
+                                    .Select(c => diceInstruction[c]);
+
+                    var splitLineLinked = new LinkedList<string>(splitLine);
+
+                    while (splitLineLinked.Count() > 0)
+                    {
+                        var curDiceName = splitLineLinked.First.Value;
+                        var curDiceList = splitLineLinked.TakeWhile(c => c == curDiceName);
+                        var curSequenceCount = curDiceList.Count();
+
+                        instructions.WriteLine($"#{lineCount}: Put ({curSequenceCount}) {curDiceName} in a row");
+
+                        IncrementKey(diceCount, curDiceName, curSequenceCount);
+                        lineCount++;
+
+                        for (var i = 0; i < curSequenceCount; i++)
+                            splitLineLinked.RemoveFirst();
+                    }
 
                     if (width == 0)
-                        width = splitLine.Where(c => c != "" && c != null).Count();
-
-                    for (int i = 0; i < splitLine.Length; i++)
-                    {
-                        if (splitLine[i] == "")
-                            continue;
-
-                        var curDiceNum = int.Parse(splitLine[i]);
-                        var curDiceName = diceInstruction[curDiceNum];
-
-
-                        if (curDiceSequence == curDiceName)
-                        {
-                            curDiceCount++;
-
-                            if (i == splitLine.Length-2)
-                            {
-                                instructions.WriteLine($"#{lineCount}: Put ({curDiceCount}) {curDiceSequence} in a row");
-                                lineCount++;
-                                IncrementKey(diceCount, curDiceSequence, curDiceCount);
-                            }
-                        }
-                        else
-                        {
-                            if (curDiceSequence != null)
-                            {
-                                instructions.WriteLine($"#{lineCount}: Put ({curDiceCount}) {curDiceSequence} in a row");
-                                lineCount++;
-                                IncrementKey(diceCount, curDiceSequence, curDiceCount);
-                            }
-
-                            curDiceSequence = curDiceName;
-                            curDiceCount = 1;
-                        }
-                    }
+                        width = splitLine.Count();                    
 
                     instructions.WriteLine($"#{lineCount}: Start new line on board");
                     lineCount++;
-                    height++;
+
                     line = file.ReadLine();
                 }
             }
